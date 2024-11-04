@@ -8,12 +8,12 @@ import (
 )
 
 type TestStruct struct {
-	XFlag     string         `xflag:"testcmd,Test command"`
-	FlagInt   *int           `xflag:"10,An integer flag with a default of 10"`
+	XFlag     string         `xflag:"testcmd|Test command"`
+	FlagInt   *int           `xflag:"10|An integer flag with a default of 10"`
 	FlagInt2  *int           `xflag:"An integer flag without default"`
-	FlagBool  *bool          `xflag:"false,A boolean flag"`
+	FlagBool  *bool          `xflag:"false|A boolean flag"`
 	FlagBool2 *bool          `xflag:"A boolean flag without default"`
-	FlagDur   *time.Duration `xflag:"5s,A duration flag with a default of 5s"`
+	FlagDur   *time.Duration `xflag:"5s|A duration flag with a default of 5s"`
 	FlagDur2  *time.Duration `xflag:"A duration flag without default"`
 	Arg1      string         `xflag:"The first required argument"`
 	Arg2      string         `xflag:"The second required argument"`

@@ -139,7 +139,7 @@ func parseCommandDefs(commands []interface{}) []commandDef {
 		for i := 0; i < v.NumField(); i++ {
 			field := v.Type().Field(i)
 			tag := field.Tag.Get("xflag")
-			parts := strings.Split(tag, ",")
+			parts := strings.Split(tag, "|")
 
 			if field.Name == "XFlag" {
 				if len(parts) != 2 {
