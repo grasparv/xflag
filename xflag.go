@@ -67,6 +67,10 @@ func Parse(commands []interface{}, args []string) (interface{}, error) {
 		return nil, fmt.Errorf("%s\nunrecognized command \"%s\"\n", helpOverview(commandDefs), *userInput.command)
 	}
 
+	if len(userInput.arguments) > len(def.arguments) {
+		return nil, fmt.Errorf("%s\ntoo many arguments given\n", helpCommandDetails(def))
+	}
+
 	for i, arg := range def.arguments {
 		var errtext strings.Builder
 		if i < len(userInput.arguments) {

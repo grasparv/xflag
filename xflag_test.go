@@ -41,6 +41,11 @@ func TestParseWithAllFlagsAndArguments(t *testing.T) {
 	require.Equal(t, "arg3_value", parsedCmd.Arg3, "Expected Arg3 to be 'arg3_value'")
 }
 
+func TestParseTooManyArgs(t *testing.T) {
+	_, err := Parse([]interface{}{TestStruct{}}, []string{"cmd", "testcmd", "arg1_value", "arg2_value", "arg3_value", "arg4_value"})
+	require.Error(t, err, "Expected error for command with too many arguments")
+}
+
 func TestParseWithMissingMandatoryArgument(t *testing.T) {
 	_, err := Parse([]interface{}{TestStruct{}}, []string{"cmd", "testcmd", "-flag-int", "42"})
 	require.Error(t, err, "Expected an error for missing mandatory arguments")
